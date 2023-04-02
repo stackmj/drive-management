@@ -1,0 +1,22 @@
+<div class="card  bg-secondary text-white">
+    <div class="card-header">
+        Create Folder
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <label>Current Folder : <b>{{s3Service.currentFolder||'/'}}</b></label>
+            </div>
+            <div class="col-sm-6 text-end">
+                <a href="javascript:;" class="btn btn-sm btn-primary" routerLink="/">Back to List</a>
+            </div>
+        </div>
+        <hr>
+        <form [formGroup]="folderForm" (ngSubmit)="onSubmit()" class="form-inline">
+            <div class="form-group mb-2">
+                <label class="sr-only">Folder Name</label>
+                <input type="text" formControlName="folderName" class="form-control col-sm-4">
+            </div>
+            <button type="submit" [disabled]="!folderForm.valid" class="btn btn-primary mb-2">Create Folder</button>
+        </form>
+    </div>

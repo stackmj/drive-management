@@ -1,0 +1,22 @@
+<div class="card  bg-secondary text-white">
+    <div class="card-header">
+        Upload File
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6">
+                <label>Current Folder : <b>{{s3Service.currentFolder||'/'}}</b></label>
+            </div>
+            <div class="col-sm-6 text-end">
+                <a href="javascript:;" class="btn btn-sm btn-primary" routerLink="/">Back to List</a>
+            </div>
+        </div>
+        <hr>
+        <form class="form-inline">
+            <div class="form-group mb-2">
+                <input type="file" (change)="onFileSelect($event)">
+            </div>
+            <button type="button" (click)="upload()" [disabled]="!selectedFile"
+                class="btn btn-primary mb-2">Upload</button>
+        </form>
+    </div>

@@ -1,0 +1,41 @@
+<div class="card bg-secondary text-white">
+    <div class="card-header">
+        My Drive
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-sm-6"><label>Current Folder : <b>{{s3Service.currentFolder||'/'}}</b></label>
+
+            </div>
+            <div class="col-sm-6 text-end">
+                <button (click)="back()" class="btn btn-primary btn-sm"
+                    *ngIf="s3Service.currentFolder!=''">Back</button>
+                
+                <button class="btn btn-primary btn-sm" style="margin-left: 5px;" routerLink="/new-folder">Create Folder</button>
+                
+                <button class="btn btn-primary btn-sm" style="margin-left: 5px;" routerLink="/upload">Upload File</button>
+            </div>
+        </div>
+        <hr>
+        <div class="list-group mt-2" *ngIf="contentList.length>0">
+            <ng-container *ngFor="let content of contentList">
+                <a href="javascript:;" (click)="viewFile(content.name)" *ngIf="content.contentType=='file'"
+                    class="list-group-item list-group-item-action list-group-item-secondary">
+                    <i class="fa fa-solid fa-file"></i>
+                    {{content.name}}
+                    <span style="float:right">
+                        {{content.modifiedTime}}
+                    </span>
+                </a>
+                <a href="javascript:;" (click)="openFolder(content.name)" *ngIf="content.contentType=='folder'"
+                    class="list-group-item list-group-item-action list-group-item-primary">
+                    <i class="fa fa-solid fa-folder"></i>
+                    {{content.name}}
+                </a>
+            </ng-container>
+        </div>
+        <div class="mt-2" *ngIf="contentList.length==0">
+            No Content
+        </div>
+    </div>
+</div>
